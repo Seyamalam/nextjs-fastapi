@@ -42,3 +42,155 @@ async def predict(
         'class': predicted_class.replace("_", " "),
         'confidence': float(confidence)
     }
+
+
+@app.post("/predict_potato")
+async def predict(
+    file: UploadFile = File(...)
+):
+    image = read_file_as_image(await file.read())
+    img_batch = np.expand_dims(image, 0)
+    
+    predictions = MODEL.predict(img_batch)
+
+    predicted_class = TOMATO_CLASS_NAMES[np.argmax(predictions[0])]
+    confidence = np.max(predictions[0])
+    return {
+        'class': predicted_class.replace("_", " "),
+        'confidence': float(confidence)
+    }
+
+
+@app.post("/predict_jute")
+async def predict(
+    file: UploadFile = File(...)
+):
+    image = read_file_as_image(await file.read())
+    img_batch = np.expand_dims(image, 0)
+    
+    predictions = MODEL.predict(img_batch)
+
+    predicted_class = TOMATO_CLASS_NAMES[np.argmax(predictions[0])]
+    confidence = np.max(predictions[0])
+    return {
+        'class': predicted_class.replace("_", " "),
+        'confidence': float(confidence)
+    }
+
+
+@app.post("/predict_lime")
+async def predict(
+    file: UploadFile = File(...)
+):
+    image = read_file_as_image(await file.read())
+    img_batch = np.expand_dims(image, 0)
+    
+    predictions = MODEL.predict(img_batch)
+
+    predicted_class = TOMATO_CLASS_NAMES[np.argmax(predictions[0])]
+    confidence = np.max(predictions[0])
+    return {
+        'class': predicted_class.replace("_", " "),
+        'confidence': float(confidence)
+    }
+
+
+@app.post("/predict_orange")
+async def predict(
+    file: UploadFile = File(...)
+):
+    image = read_file_as_image(await file.read())
+    img_batch = np.expand_dims(image, 0)
+    
+    predictions = MODEL.predict(img_batch)
+
+    predicted_class = TOMATO_CLASS_NAMES[np.argmax(predictions[0])]
+    confidence = np.max(predictions[0])
+    return {
+        'class': predicted_class.replace("_", " "),
+        'confidence': float(confidence)
+    }
+
+
+@app.post("/predict_apple")
+async def predict(
+    file: UploadFile = File(...)
+):
+    image = read_file_as_image(await file.read())
+    img_batch = np.expand_dims(image, 0)
+    
+    predictions = MODEL.predict(img_batch)
+
+    predicted_class = TOMATO_CLASS_NAMES[np.argmax(predictions[0])]
+    confidence = np.max(predictions[0])
+    return {
+        'class': predicted_class.replace("_", " "),
+        'confidence': float(confidence)
+    }
+
+
+@app.post("/predict_paddy")
+async def predict(
+    file: UploadFile = File(...)
+):
+    image = read_file_as_image(await file.read())
+    img_batch = np.expand_dims(image, 0)
+    
+    predictions = MODEL.predict(img_batch)
+
+    predicted_class = TOMATO_CLASS_NAMES[np.argmax(predictions[0])]
+    confidence = np.max(predictions[0])
+    return {
+        'class': predicted_class.replace("_", " "),
+        'confidence': float(confidence)
+    }
+
+
+@app.post("/predict_strawberry")
+async def predict(
+    file: UploadFile = File(...)
+):
+    image = read_file_as_image(await file.read())
+    img_batch = np.expand_dims(image, 0)
+    
+    predictions = MODEL.predict(img_batch)
+
+    predicted_class = TOMATO_CLASS_NAMES[np.argmax(predictions[0])]
+    confidence = np.max(predictions[0])
+    return {
+        'class': predicted_class.replace("_", " "),
+        'confidence': float(confidence)
+    }
+
+
+@app.post("/predict_pepper")
+async def predict(
+    file: UploadFile = File(...)
+):
+    image = read_file_as_image(await file.read())
+    img_batch = np.expand_dims(image, 0)
+    
+    predictions = MODEL.predict(img_batch)
+
+    predicted_class = TOMATO_CLASS_NAMES[np.argmax(predictions[0])]
+    confidence = np.max(predictions[0])
+    return {
+        'class': predicted_class.replace("_", " "),
+        'confidence': float(confidence)
+    }
+
+@app.post("/predict_mango")
+async def predict(
+    file: UploadFile = File(...)
+):
+    image = read_file_as_image(await file.read())
+    img_batch = np.expand_dims(image, 0)
+    
+    predictions = MODEL.predict(img_batch)
+
+    predicted_class = TOMATO_CLASS_NAMES[np.argmax(predictions[0])]
+    confidence = np.max(predictions[0])
+    return {
+        'class': predicted_class.replace("_", " "),
+        'confidence': float(confidence)
+    }
