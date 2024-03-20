@@ -22,12 +22,15 @@ TOMATO_CLASS_NAMES = ["Tomato___Bacterial_spot", "Tomato___Early_blight", "Tomat
 def hello_world():
     return {"message": "Hello Worl"}
 
+
+
+
 def read_file_as_image(data) -> np.ndarray:
     image = np.array(Image.open(BytesIO(data)))
     return image
 
 
-@app.post("/predict_tomato")
+@app.post("/api/predict_tomato")
 async def predict(
     file: UploadFile = File(...)
 ):
@@ -44,7 +47,7 @@ async def predict(
     }
 
 
-@app.post("/predict_potato")
+@app.post("/api/predict_potato")
 async def predict(
     file: UploadFile = File(...)
 ):
@@ -61,7 +64,7 @@ async def predict(
     }
 
 
-@app.post("/predict_jute")
+@app.post("/api/predict_jute")
 async def predict(
     file: UploadFile = File(...)
 ):
@@ -78,7 +81,7 @@ async def predict(
     }
 
 
-@app.post("/predict_lime")
+@app.post("/api/predict_lime")
 async def predict(
     file: UploadFile = File(...)
 ):
@@ -95,7 +98,7 @@ async def predict(
     }
 
 
-@app.post("/predict_orange")
+@app.post("/api/predict_orange")
 async def predict(
     file: UploadFile = File(...)
 ):
@@ -112,7 +115,7 @@ async def predict(
     }
 
 
-@app.post("/predict_apple")
+@app.post("/api/predict_apple")
 async def predict(
     file: UploadFile = File(...)
 ):
@@ -129,7 +132,7 @@ async def predict(
     }
 
 
-@app.post("/predict_paddy")
+@app.post("/api/predict_paddy")
 async def predict(
     file: UploadFile = File(...)
 ):
@@ -146,7 +149,7 @@ async def predict(
     }
 
 
-@app.post("/predict_strawberry")
+@app.post("/api/predict_strawberry")
 async def predict(
     file: UploadFile = File(...)
 ):
@@ -163,7 +166,7 @@ async def predict(
     }
 
 
-@app.post("/predict_pepper")
+@app.post("/api/predict_pepper")
 async def predict(
     file: UploadFile = File(...)
 ):
@@ -179,7 +182,7 @@ async def predict(
         'confidence': float(confidence)
     }
 
-@app.post("/predict_mango")
+@app.post("/api/predict_mango")
 async def predict(
     file: UploadFile = File(...)
 ):
