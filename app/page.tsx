@@ -1,93 +1,63 @@
-"use client";
+import Image from "next/image";
 
-import { FormEvent, useState } from "react";
+import { supported_diseases } from "@/CONSTANTS";
 
-import { API_LABEL_STRUCTURE, API_PATHS } from "@/CONSTANTS";
-
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
+import Dropzone from "@/components/Dropzone";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+	HoverCard,
+	HoverCardContent,
+	HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 export default function Page() {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [result, setResult] = useState<string>("");
+	return (
+		<main className="h-screen p-10">
+			<Image
+				src="/bg.jpeg"
+				alt="background"
+				fetchPriority="high"
+				fill
+				className="absolute top-0 left-0 w-full h-full object-cover blur-md -z-10"
+			/>
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+			<h1 className="text-xl font-semibold text-center text-white bg-gray-800/50 p-5 rounded-lg m-10">
+				Disclaimer: DeepLeaf, the plant leaf disease diagnosis app, does not
+				trace or save any images or data uploaded by users. We prioritize user
+				privacy and data security, and as such, all uploaded images are
+				processed solely for the purpose of disease diagnosis and are not stored
+				or used for any other purposes. We adhere to strict data protection
+				standards and do not collect any personally identifiable information
+				from users during the app's usage. Users can confidently use DeepLeaf
+				knowing that their privacy and confidentiality are fully respected and
+				protected.
+			</h1>
 
-    const form = e.currentTarget;
-    const api = form.api.value;
-    const picture = form.picture.files[0];
+			<Dropzone />
 
-    if (!api || !picture) {
-      alert("Please fill all the fields");
-    }
+			<HoverCard>
+				<HoverCardTrigger className="fixed bottom-0 left-0 m-3 bg-background w-6 h-6 text-sm font-semibold grid place-content-center rounded-full cursor-pointer">
+					i
+				</HoverCardTrigger>
+				<HoverCardContent className="w-80 max-h-96 overflow-auto">
+					<h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+						Supported Diseases
+					</h2>
+					<ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+						{supported_diseases.map((disease) => (
+							<li
+								key={disease}
+								className="text-sm"
+							>
+								{disease}
+							</li>
+						))}
+					</ul>
 
-    if (!API_PATHS.includes(api)) {
-      alert("Invalid API");
-    }
-
-    try {
-      setLoading(true);
-      const formData = new FormData();
-      formData.append("file", picture);
-
-      const response = await fetch(api, {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
-      setResult(JSON.stringify(data));
-    } catch (error) {
-      setResult("An error occured!");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div className="container my-10">
-      <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
-        <div className="grid items-center gap-1.5">
-          <Label htmlFor="api">Choose what u wanna predict</Label>
-          <Select name="api">
-            <SelectTrigger>
-              <SelectValue placeholder="Predict" />
-            </SelectTrigger>
-
-            <SelectContent>
-              {API_LABEL_STRUCTURE.map((item, index) => (
-                <SelectItem key={index} value={item.api}>
-                  {item.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="grid items-center gap-1.5">
-          <Label htmlFor="picture">Picture</Label>
-          <Input id="picture" name="picture" type="file" accept="image/*" />
-        </div>
-
-        <Button disabled={loading} type="submit" className="w-full">
-          {loading ? "Loading..." : "Submit"}
-        </Button>
-
-        {!!result && (
-          <p className="font-mono font-bold">
-            Result: <code>{result}</code>
-          </p>
-        )}
-      </form>
-    </div>
-  );
+					<p className="mt-4 text-sm text-gray-600 dark:text-gray-500">
+						More diseases will be added in the future.
+					</p>
+				</HoverCardContent>
+			</HoverCard>
+		</main>
+	);
 }
