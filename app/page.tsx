@@ -27,9 +27,9 @@ export default function Page() {
         processed solely for the purpose of disease diagnosis and are not stored
         or used for any other purposes. We adhere to strict data protection
         standards and do not collect any personally identifiable information
-        from users during the app's usage. Users can confidently use AgriScan
-        knowing that their privacy and confidentiality are fully respected and
-        protected.
+        from users during the app&apos;s usage. Users can confidently use
+        AgriScan knowing that their privacy and confidentiality are fully
+        respected and protected.
       </h1>
 
       <Dropzone />
